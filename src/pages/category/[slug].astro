@@ -1,18 +1,17 @@
 ---
-import { getCollection } from "astro:content";
-
 import BaseHead from "@/components/BaseHead.astro";
+import { getCategoriesWithBlogs } from "@/utils/data";
 
 export async function getStaticPaths() {
-  const categories = await getCollection("category");
+  const categories = await getCategoriesWithBlogs();
 
-  return categories.map(category => ({
+  return categories.map(({ category, blogs }) => ({
     params: { slug: category.data.slug },
-    props: { category: category.data },
+    props: { category: category.data, blogs },
   }));
 }
 
-const { category } = Astro.props;
+const { category, blogs } = Astro.props;
 ---
 
 <html lang="en">
@@ -24,6 +23,7 @@ const { category } = Astro.props;
     <main>
       <div>{category.slug}</div>
       <div>{category.name}</div>
+      <div>{blogs.length}</div>
     </main>
   </body>
 </html>

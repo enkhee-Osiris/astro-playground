@@ -1,0 +1,28 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import { getTagsWithBlogs } from "@/utils/data";
+
+export async function getStaticPaths() {
+  const tags = await getTagsWithBlogs();
+
+  return tags.map(({ tag, blogs }) => ({
+    params: { tag },
+    props: { tag, blogs },
+  }));
+}
+
+const { tag, blogs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="asd" description="aaa" />
+  </head>
+
+  <body>
+    <main>
+      <div>{tag}</div>
+      <div>{blogs.length}</div>
+    </main>
+  </body>
+</html>

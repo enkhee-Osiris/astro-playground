@@ -79,7 +79,7 @@ const { title, description, pubDate, updatedDate, heroImage, category } = Astro.
           {heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
         </div>
 
-        {category && <a href={`/category/${category.slug}`}>{JSON.stringify(category)}</a>}
+        {category && <a href={`/category/${category.slug}`}>{category.name}</a>}
 
         <div class="prose">
           <div class="title">
