@@ -1,0 +1,28 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import { getTagsWithBlogs } from "@/utils/data";
+
+const tags = await getTagsWithBlogs();
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="asd" description="aaa" />
+  </head>
+
+  <body>
+    <main>
+      <ul>
+        {
+          tags.map(({ tag, blogs }) => (
+            <li>
+              <a href={`/tag/${tag}`}>
+                {tag} - {blogs.length}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </body>
+</html>

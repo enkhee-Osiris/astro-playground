@@ -1,0 +1,17 @@
+[
+  {
+    "id": "tech",
+    "slug": "tech",
+    "name": "Tech"
+  },
+  {
+    "id": "scratch",
+    "slug": "scratch",
+    "name": "Scratch"
+  },
+  {
+    "id": "design",
+    "slug": "design",
+    "name": "Design"
+  }
+]

@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseHead from "@/components/BaseHead.astro";
+
+export async function getStaticPaths() {
+  const categories = await getCollection("category");
+
+  return categories.map(category => ({
+    params: { slug: category.data.slug },
+    props: { category: category.data },
+  }));
+}
+
+const { category } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="asd" description="aaa" />
+  </head>
+
+  <body>
+    <main>
+      <div>{category.slug}</div>
+      <div>{category.name}</div>
+    </main>
+  </body>
+</html>

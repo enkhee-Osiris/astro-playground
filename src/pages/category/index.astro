@@ -1,0 +1,26 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import { getCategoriesWithBlogs } from "@/utils/data";
+
+const categories = await getCategoriesWithBlogs();
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="asd" description="aaa" />
+  </head>
+
+  <body>
+    <main>
+      <ul>
+        {
+          categories.map(({ category }) => (
+            <li>
+              <a href={`/category/${category.data.slug}`}>{category.data.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </body>
+</html>

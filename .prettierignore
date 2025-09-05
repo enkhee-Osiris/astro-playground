@@ -1,0 +1,7 @@
+# Ignore artifacts:
+
+.astro/
+dist
+public
+
+package.json
